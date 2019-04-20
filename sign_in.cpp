@@ -14,7 +14,7 @@ void sign_in()
 	acc_type_prp();
 	int choice;
 	cin>>choice;
-	if(choice!=1&&choice!=2){
+	while(choice!=1&&choice!=2){
 		cout<<"Invalid Selection. Try again\n";
 		acc_type_prp();
 		cin>>choice;
