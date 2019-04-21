@@ -2,6 +2,7 @@
 #include <fstream>
 using namespace std;
 
+
 void acc_type_prp()
 {
 	cout<<"Sign in as a/an: \n";
