@@ -1,24 +1,19 @@
 #include <iostream>
 #include <fstream>
+#include "useful_functions.h"
 using namespace std;
 
 
-void acc_type_prp()
+bool sign_in(user &u)
 {
-	cout<<"Sign in as a/an: \n";
-	cout<<"Student - 1\n";
-	cout<<"Instructor - 2\n";
-}
-
-void sign_in()
-{
-	acc_type_prp();
-	int choice;
-	cin>>choice;
-	while(choice!=1&&choice!=2){
-		cout<<"Invalid Selection. Try again\n";
-		acc_type_prp();
-		cin>>choice;
+	cout<<"Enter UID: ";
+	string id;
+	cin>>id;
+	if(get_user_info(id, u){
+		cout<<"Signed In Successfully.\n";
+		return true;
+	}else{
+		cout<<"Failed To Sign In. Try Again.\n";
+		return false;
 	}
-	cout<<choice<<"\n";
 }

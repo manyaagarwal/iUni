@@ -1,4 +1,10 @@
 *.exe
 *.o
+main.exe
+main.o
+sign_in.o
+sign_up.o
+useful_functions.o
+UserInfo.txt
 UIDList
 test

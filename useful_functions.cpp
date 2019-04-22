@@ -4,36 +4,27 @@
 #include <string>
 using namespace std;
 
-/*string[] get_array_from_line(ifstream &fin)
-{
-	string line;
-	getline(fin, line);
-	stringstream ss(line);
-}
+struct user {
+	string id, password, email, category, fname, lname;
+};
 
-string[] get_info(string id, string file)
+bool get_user_info(string id, user &u)
 {
-	std::ifstream fin(file, std::ios::in);
-	string info[] = new string[]("0000");
+	std::ifstream fin("UserInfo.txt", std::ios::in);
 	if (fin.is_open()) {
-		string line;
+		std::string line;
 		while (std::getline(fin, line)) {
 			stringstream ss(line);
-
-			if(line[id.size()]==' '){
+			ss>>u.id>>u.password>>u.email>>u.category>>u.fname>>u.lname;
+			if(u.id == id){
 				return true;
-			}else{
-				return false;
 			}
 		}
 		fin.close();
 	}
-	else {
-		std::cerr << "Unable to open file\n";
-		return false;
-	}
+	return false;
 }
-*/
+
 bool search_identifier(string id, string file)
 {
 	std::ifstream fin(file, std::ios::in);
