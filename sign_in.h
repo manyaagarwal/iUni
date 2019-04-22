@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "useful_functions.h"
 using namespace std;
 
-void acc_type_prp();
-void sign_in();
+void sign_in(user &u);
