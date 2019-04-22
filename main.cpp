@@ -11,6 +11,5 @@ int main()
 	string id;
 	cin>>id;
 	user u;
-	cout<<get_user_info(id, u)<<"\n";
-	cout<<u.id<<" "<<u.password<<" "<<u.email<<" "<<u.category<<" "<<u.fname<<" "<<u.lname<<"\n";
+	sign_in(u);
 }

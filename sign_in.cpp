@@ -9,7 +9,7 @@ bool sign_in(user &u)
 	cout<<"Enter UID: ";
 	string id;
 	cin>>id;
-	if(get_user_info(id, u){
+	if(get_user_info(id, u)){
 		cout<<"Signed In Successfully.\n";
 		return true;
 	}else{
