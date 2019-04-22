@@ -5,10 +5,10 @@ using namespace std;
 
 bool sign_up()
 {
+	user u;
 	std::cout << "Enter UID: ";
-	string UID, email, fname, lname, category, gender;
-	std::cin >> UID;
-	if(find_line_in_file(UID, "UIDList")){
+	std::cin >> u.id;
+	if(search_identifier(u.id, "UserInfo.txt")){
 		cout<<"User already exists.\n";
 		return false;
 	}
@@ -18,24 +18,24 @@ bool sign_up()
 	cout<<"Enter choice: ";
 	cin>>choice;
 	if(choice==1)
-		category="Student";
+		u.category="Student";
 	else
-		category="Instructor";
+		u.category="Instructor";
 	cout<<"Enter Email ID: ";
-	cin>>email;
+	cin>>u.email;
 	cout<<"Enter First Name: ";
-	getline(cin, fname);
-	getline(cin, fname);
+	getline(cin, u.fname);
+	getline(cin, u.fname);
 	cout<<"Enter Last Name: ";
-	getline(cin, lname);
-	string command="./add_user.sh "+UID+" "+UID+" "+email+" "+category+" "+fname+" "+lname;
-	system(command.c_str());
-	ifstream check("Users/"+UID+"/info.txt");
-	if(check.is_open()){
-		add_line_in_file(UID, "UIDList");
-		cout<<"Account successully created.\n";
+	getline(cin, u.lname);
+	cout<<"Enter Password: ";
+	getline(cin, u.password);
+	string user_info=u.id+" "+u.password+" "+u.email+" "+u.category+" "+u.fname+" "+u.lname;
+	if(add_line_in_file(user_info, "UserInfo.txt")){
+		cout<<"Sign Up Successful!\n";
 		return true;
 	}else{
-		cout<<"Sign Up failed.\n";
+		cout<<"Sign Up Failed.\n";
+		return false;
 	}
 }

@@ -1,7 +1,7 @@
 useful_functions.o: useful_functions.cpp useful_functions.h
 	g++ -pedantic-errors -std=c++11 -c useful_functions.cpp
 
-main.o: main.cpp sign_in.h sign_up.h
+main.o: main.cpp sign_in.h sign_up.h useful_functions.h
 	g++ -pedantic-errors -std=c++11 -c main.cpp
 
 sign_in.o: sign_in.h sign_in.cpp
