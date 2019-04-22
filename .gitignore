@@ -1,3 +1,5 @@
+*.exe
+*.o
 main.exe
 main.o
 sign_in.o
