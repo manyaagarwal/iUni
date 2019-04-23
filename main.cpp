@@ -4,6 +4,7 @@
 #include "sign_up.h"
 #include "useful_functions.h"
 #include "search_people.h"
+#include "edit_details.h"
 
 using namespace std;
 
