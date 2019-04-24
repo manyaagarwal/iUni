@@ -8,6 +8,10 @@ struct user {
 	string id, password, email, category, fname, lname;
 };
 
+
+user this_user;
+bool in_session = false;
+
 bool get_user_info(string id, user &u)
 {
 	std::ifstream fin("UserInfo.txt", std::ios::in);
