@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "useful_functions.h"
+#include "global_data.h"
 using namespace std;
 
 bool sign_in(user &u);

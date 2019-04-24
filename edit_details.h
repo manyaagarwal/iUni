@@ -3,7 +3,7 @@
 
 #include <fstream>
 #include <string>
-#include "useful_functions.h"
+#include "global_data.h"
 #include <cstdlib>
 using namespace std;
 

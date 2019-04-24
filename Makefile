@@ -1,20 +1,33 @@
-edit_details.o: edit_details.cpp edit_details.h useful_functions.h
+.PHONY: main
+main:
+#1\
+student.o: student.cpp student.h edit_details.h global_data.h
+	g++ -pedantic-errors -std=c++11 -c student.cpp
+
+#2\
+edit_details.o: edit_details.cpp edit_details.h global_data.h
 	g++ -pedantic-errors -std=c++11 -c edit_details.cpp
 
-search_people.o: search_people.cpp search_people.h useful_functions.h
+#3\
+search_people.o: search_people.cpp search_people.h global_data.h
 	g++ -pedantic-errors -std=c++11 -c search_people.cpp
 
-useful_functions.o: useful_functions.cpp useful_functions.h
-	g++ -pedantic-errors -std=c++11 -c useful_functions.cpp
+#4\
+global_data.o: global_data.cpp global_data.h
+	g++ -pedantic-errors -std=c++11 -c global_data.cpp
 
-main.o: main.cpp sign_in.h sign_up.h useful_functions.h search_people.h edit_details.h
+#5\
+main.o: main.cpp sign_in.h sign_up.h global_data.h search_people.h edit_details.h student.o
 	g++ -pedantic-errors -std=c++11 -c main.cpp
 
-sign_in.o: sign_in.h sign_in.cpp useful_functions.h
+#6\
+sign_in.o: sign_in.h sign_in.cpp global_data.h
 	g++ -pedantic-errors -std=c++11 -c sign_in.cpp
 
-sign_up.o: sign_up.h sign_up.cpp useful_functions.h
+#7\
+sign_up.o: sign_up.h sign_up.cpp global_data.h
 	g++ -pedantic-errors -std=c++11 -c sign_up.cpp
 
-main: main.o sign_in.o sign_up.o useful_functions.o search_people.o
-	g++ -pedantic-errors -std=c++11 main.o sign_in.o useful_functions.o search_people.o edit_details.o sign_up.o -o main
+#8\
+main: main.o sign_in.o global_data.o search_people.o edit_details.o sign_up.o student.o
+	g++ -pedantic-errors -std=c++11 main.o sign_in.o global_data.o search_people.o edit_details.o sign_up.o student.o -o main

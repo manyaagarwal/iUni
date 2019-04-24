@@ -5,10 +5,10 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include "useful_functions.h"
+#include "global_data.h"
 
 using namespace std;
 
-void search_users(string s);
+void search_users();
 
 #endif
