@@ -18,6 +18,7 @@ void search_users()
     for(int i=0;i<s.size();i++){
       s[i]=tolower(s[i]);
     }
+    bool found=false;
     while (std::getline(fin, line)) {
       line_l=line;
       stringstream ss(line);
@@ -28,7 +29,11 @@ void search_users()
       }
       if(line_l.find(s)!=string::npos){
         cout<<u.fname<<" "<<u.lname<<" "<<u.category<<" "<<u.email<<"\n";
+        found = true;
       }
+    }
+    if(!found){
+      std::cout << "No Matches Found" << '\n';
     }
     fin.close();
   }
