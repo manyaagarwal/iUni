@@ -6,10 +6,12 @@ using namespace std;
 
 void edit(user &u)
 {
+  while (true) {
   cout << "1 - Email:\t"<< u.email << '\n';
   cout << "2 - First Name:\t"<< u.fname << '\n';
   cout << "3 - Last Name:\t"<< u.lname << '\n';
   cout << "4 - Password:\t******\n";
+  std::cout << "0 - Go Back" << '\n';
   cout << "Select the field you need to edit: ";
   int choice;
   cin>>choice;
@@ -31,6 +33,8 @@ void edit(user &u)
       cout << "Enter new Password: ";
       cin>>u.password;
       break;
+    case 0:
+      return;
   }
   ifstream fin("UserInfo.txt");
   ofstream fout("temp.txt");
@@ -49,5 +53,6 @@ void edit(user &u)
     fout.close();
   } else {
     std::cerr << "Edit Failed\n";
+  }
   }
 }

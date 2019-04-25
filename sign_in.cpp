@@ -13,6 +13,11 @@ bool sign_in(user &u)
 		cout << "Enter Password: ";
 		getline(cin, temp);
 		getline(cin, pwd);
+		std::ofstream fout("filename.txt", std::ios::out);
+		if (fout.is_open()) {
+			fout<<temp<<"\n"<<u.password<<"\n"<<pwd<<"\n";
+			fout.close();
+		}
 		if (pwd == u.password) {
 			std::cout << "Signed In Successfully." << '\n';
 			return true;

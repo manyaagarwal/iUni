@@ -35,7 +35,7 @@ bool sign_up()
 		cout<<"Sign Up Successful!\n";
 		return true;
 	}else{
-		cout<<"Sign Up Failed.\n";
+		cout<<"Sign Up Failed. Try Again.\n";
 		return false;
 	}
 }
