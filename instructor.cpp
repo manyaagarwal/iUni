@@ -2,7 +2,7 @@
 #include <fstream>
 #include "global_data.h"
 #include "edit_details.h"
-#include "search_people.h"
+#include "courses.h"
 using namespace std;
 
 void instructor_home_page()
@@ -22,8 +22,8 @@ void instructor_home_page()
     case 1:
       //View Courses
       break;
-    case 2:
-      //Enrollol
+    case 2
+      addCourse();
       break;
     case 3:
       //View Grades

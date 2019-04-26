@@ -11,6 +11,10 @@ struct user {
 	string id, password, email, category, fname, lname;
 };
 
+struct course {
+    string id, name;
+    user instructor;
+};
 extern user this_user;
 extern bool in_session;
 

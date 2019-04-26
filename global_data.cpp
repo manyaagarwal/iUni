@@ -59,6 +59,17 @@ bool add_line_in_file(string s, string file)
 	return false;
 }
 
+bool add_course_in_file(cource c, string file)
+{
+    ofstream fout(file, std::ios_base::app);
+    if (fout.is_open()) {
+        fout<<c;
+        fout.close();
+        return true;
+    }
+    return false;
+}
+
 bool find_line_in_file(string s, string file)
 {
 	std::ifstream fin(file, std::ios::in);
