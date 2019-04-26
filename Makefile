@@ -32,6 +32,10 @@ sign_up.o: sign_up.h sign_up.cpp global_data.h
 instructor.o:
 	g++ -pedantic-errors -std=c++11 -c instructor.cpp
 
-#8\
+#9\
+courses.o:
+	g++ -pedantic-errors -std=c++11 -c courses.cpp
+
+#10\
 main: main.o sign_in.o global_data.o search_people.o edit_details.o sign_up.o student.o
-	g++ -pedantic-errors -std=c++11 main.o sign_in.o global_data.o search_people.o edit_details.o sign_up.o student.o instructor.o -o main
+	g++ -pedantic-errors -std=c++11 main.o sign_in.o global_data.o search_people.o edit_details.o sign_up.o student.o instructor.o courses.o -o main
