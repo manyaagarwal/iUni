@@ -7,7 +7,10 @@ using namespace std;
 struct user {
 	string id, password, email, category, fname, lname;
 };
-
+struct course {
+    string id,name,des;
+    user instructor;
+};
 
 user this_user;
 bool in_session = false;
@@ -42,7 +45,6 @@ bool search_identifier(string id, string file)
 		fin.close();
 	}
 	else {
-		std::cerr << "Unable to open file\n";
 		return false;
 	}
 	return false;
