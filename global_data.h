@@ -1,13 +1,18 @@
-#ifndef  USEFUL_FUNCTIONS_H
-#define USEFUL_FUNCTIONS_H
+#ifndef GLOBAL_DATA_H
+#define GLOBAL_DATA_H
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
+#include <string>
 using namespace std;
 
 struct user {
-  string id, password, email, category, fname, lname;
+	string id, password, email, category, fname, lname;
 };
+
+extern user this_user;
+extern bool in_session;
 
 bool get_user_info(string id, user &u);
 
