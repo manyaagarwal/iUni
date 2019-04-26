@@ -14,7 +14,8 @@ void addCourse(){
     }
     cout<<"Enter Course Name";
     cin>>c.name;
-    if (add_course_in_file(c,"CourseInfo.txt")){
+    string courseInfo = c.id + " " + c.name;
+    if (add_line_in_file(courseInfo,"CourseInfo.txt")){
         cout<<"Course was successfully created.\n";
         return;
     }
