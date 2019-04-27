@@ -51,7 +51,7 @@ void download_assignment(){
         string path;
         cout<<"Enter path to download: \n";
         getline(cin,path);
-        string download = "download_assignment.sh" + " " + assignment + " " + index + " " + path;
+        string download = "download_assignment.sh" + " " + assignment[index] + " " + this_course.id + " " + path;
         system(download);
     } else {
         cout<<"This course has no downloads.\n";
