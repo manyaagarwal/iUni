@@ -24,8 +24,16 @@ void upload_assignment()
     string courseInfo;
     getline(fin, courseInfo);
     //Updating course info in the individual text file
-    courseInfo += this_course.id + " ";
-    edit_file("Name ", courseInfo, courseFile);
+    string line;
+    if(!getline(fin,line))
+    {
+        courseInfo = "Name " + this_course.id;
+        add_line_in_file(courseInfo,courseFile);
+    }
+    else {
+        courseInfo += this_course.id + " ";
+        edit_file("Name ", courseInfo, courseFile);
+    }
     //Updating the assignment count in the CourseInfo text file
     string assignmentCount = this_course.id + " " + this_course.name + " " + this_course.des + " " + this_course.instructor.id + " "
             + this_course.instructor.lname + " " + this_course.instructor.fname + " " + to_string(this_course.num_assignment);

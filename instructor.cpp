@@ -13,7 +13,7 @@ void instructor_home_page()
   std::cout << "Welcome " <<this_user.fname<< "!\n";
   std::cout << "1 - View Courses" << '\n';
   std::cout << "2 - Create A Course" << '\n';
-  std::cout << "4 - View Student Grades" << '\n';
+  std::cout << "3 - View Student Grades" << '\n';
   std::cout << "4 - Search People" << '\n';
   std::cout << "5 - Edit Personal Details" << '\n';
   std::cout << "0 - Sign Out" << '\n';
@@ -22,7 +22,7 @@ void instructor_home_page()
   std::cin >> choice;
   switch (choice) {
     case 1:
-      //View Courses
+      view_created_courses();
       break;
     case 2:
       if (addCourse()){
