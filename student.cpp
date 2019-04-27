@@ -4,6 +4,7 @@
 #include "edit_details.h"
 #include "search_people.h"
 #include "courses.h"
+#include "student_course.h"
 using namespace std;
 
 void student_home_page()
@@ -24,7 +25,19 @@ void student_home_page()
       view_enrolled_courses();
       break;
     case 2:
-      enrollCourse();
+        if (enrollCourse()){
+            char ch;
+            cout<<"Course was successfully added.\nDo you wish to view more options related to the course?(Y/N)\n";
+            cin>>ch;
+            if(ch == 'Y'){
+                student_course_menu();
+            }
+        }
+        else{
+            cout<<"Course cannot be created";
+        }
+
+
       break;
     case 3:
       //View Grades

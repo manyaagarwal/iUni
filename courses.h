@@ -7,7 +7,7 @@
 using namespace std;
 
 bool addCourse();
-void enrollCourse();
+bool enrollCourse();
 void view_enrolled_courses();
 void view_details(string id);
 void edit_details(string id);
