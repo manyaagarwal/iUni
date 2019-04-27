@@ -63,7 +63,7 @@ bool enrollCourse() {
         if (add_header) fout<<"Student ID \n";
         this_user.courses.push_back(c.id);
         fout<<this_user.id<<endl;
-        string user_info = get_line_from_file(this_user.id, "UserInfo") + " " + c.id;
+        string user_info = get_line_from_file(this_user.id, "UserInfo.txt") + " " + c.id;
         edit_file(this_user.id,user_info,"UserInfo.txt");
         fout.close();
         return true;

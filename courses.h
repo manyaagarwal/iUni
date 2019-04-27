@@ -10,5 +10,5 @@ bool addCourse();
 bool enrollCourse();
 void view_enrolled_courses();
 void view_details(string id);
-void edit_details(string id);
+void edit_details(course &c);
 #endif

@@ -15,6 +15,7 @@ void upload_assignment()
     cin>>filename;
     cout<<"Enter the destination of the assignment on your system:\n";
     getline(cin,path);
+    getline(cin,path);
     string cmd = "./upload.sh " + filename + " " + path + " " + this_course.id;
     system(cmd.c_str());
     this_course.num_assignment++;
@@ -60,14 +61,14 @@ void download_assignment(){
         cout<<"Enter path to download: \n";
         getline(cin,path);
         string assignment_name = assignment[index];
-        string download = "./download_assignment.sh" + " " + assignment_name + " " + this_course.id + " " + path;
+        string download = "./download_assignment.sh" " " + assignment_name + " " + this_course.id + " " + path;
         system(download.c_str());
     } else {
         cout<<"This course has no assignments.\n";
     }
 
 }
-void delete_assigment(){
+void remove_assignment(){
 
 }
 

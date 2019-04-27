@@ -1,8 +1,10 @@
+#include <string>
 #include <iostream>
 #include <fstream>
 #include "global_data.h"
 #include "assignments.h"
 #include "courses.h"
+using namespace std;
 
 void instructor_course_menu(){
     while(true)
@@ -18,6 +20,7 @@ void instructor_course_menu(){
         std::cout << "0 - Go Back" << '\n';
         std::cout << "Select Your Choice: " << '\n';
         int choice;
+        string name;
         cin>>choice;
         switch(choice){
             case 1:
@@ -33,12 +36,12 @@ void instructor_course_menu(){
                 remove_assignment();
                 break;
             case 5:
-                string name;
-                cout<<"Enter assignment file name to grade:\n"
+                cout<<"Enter assignment file name to grade:\n";
                 getline(cin,name);
                 grade_assignment(name);
                 break;
             case 6:
+                //rgrgrg
                 break;
             case 7:
                 break;
