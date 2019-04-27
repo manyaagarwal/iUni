@@ -37,6 +37,31 @@ bool get_user_info(string id, user &u)
 	return false;
 }
 
+bool get_course_info(string id, course &c)
+{
+	std::ifstream fin("CourseInfo.txt", std::ios::in);
+	if (fin.is_open()) {
+		std::string line;
+		while (std::getline(fin){
+			vector<string> words;
+			string word;
+			for(int i=0;i<line.size();i++){
+				if(line[i]!='\t'){
+					word+=line[i];
+				}else{
+					words.push_back(word);
+				}
+			}
+			if(u.id == id){
+				return true;
+			}
+		}
+		fin.close();
+	}
+	return false;
+}
+
+
 bool search_identifier(string id, string file)
 {
 	std::ifstream fin(file, std::ios::in);
