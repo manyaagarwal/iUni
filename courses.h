@@ -11,5 +11,6 @@ bool enrollCourse();
 void view_created_courses();
 void view_enrolled_courses();
 void view_details(string id);
+void view_grades();
 void edit_details(course &c);
 #endif
