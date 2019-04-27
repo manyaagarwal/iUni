@@ -90,41 +90,6 @@ void view_created_courses(){
     print_vector(this_user.courses);
 }
 
-void remove_user_from_course()
-{
-  std::cout << "Enter Student UID: ";
-  string id;
-  cin>>id;
-  std::cout << "Enter Course Name" << '\n';
-  string course;
-  cin>>course;
-  ifstream fin("UserInfo.txt");
-  ofstream fout("temp.txt");
-  if (fin.is_open()) {
-    std::string line;
-    while (std::getline(fin, line)) {
-      if(line.find(u.id+" ")==0){
-          stringstream ss(line+"\n");
-          user temp;
-          string courses;
-          ss>>temp.id>>temp.password>>temp.email>>temp.category>>temp.fname>>temp.lname;
-          string new_course_list="";
-
-        fout<<u.id+" "+u.password+" "+u.email+" "+u.category+" "+u.fname+" "+u.lname+" "+courses<<"\n";
-      }else{
-        fout<<line<<    "\n";
-      }
-    }
-    remove("UserInfo.txt");
-    rename("temp.txt", "UserInfo.txt");
-    fin.close();
-    fout.close();
-  } else {
-    std::cerr << "Edit Failed\n";
-  }
-  }
-}
-
 void view_details(string id){
     cout<<get_line_from_file(id, "CourseInfo.txt");
 }
@@ -201,7 +166,6 @@ void view_grade_student(){
     cout<<"Select course to view grades: ";
     view_enrolled_courses();
     int choice;
-    int choice;
     cout<<"Enter your choice: ";
     cin>>choice;
     string course = this_user.courses[choice-1];
@@ -209,4 +173,3 @@ void view_grade_student(){
     string grade = get_line_from_file(this_user.id, file);
     cout<<grade;
 }
-
