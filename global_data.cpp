@@ -122,5 +122,5 @@ void edit_file(string id, string newline, string file)
 void print_vector(vector<string> &input)
 {
     for (int i=0; i<input.size(); i++)
-        cout<<input.at(i)<<endl;
+        cout<<i+1<<". "<<input.at(i)<<endl;
 }

@@ -38,7 +38,7 @@ void instructor_home_page()
       }
       break;
     case 3:
-      //View Grades
+      view_grades();
       break;
     case 4:
       search_users();
