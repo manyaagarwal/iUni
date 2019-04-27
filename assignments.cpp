@@ -83,12 +83,30 @@ void remove_assignment(){
          cout<<"Select assignment to delete: ";
          cin>>choice;
          int index = choice - 1;
-         string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;
-         system(del.c_str());
          string course_file = this_course.id + ".txt";
          fstream fin(course_file);
          string line;
+         string name;
          getline(fin,line);
+         stringstream ss(line+"\n");
+         ss>>name;
+         string newline;
+         newline += name;
+         int column;
+         for (int i=0; i<this_course.num_assignment; i++) {
+             ss>>course[i];
+             if(course[i] == name){
+                 column = i+1;
+             }
+             else {
+                 newline += " " + course[i];
+             }
+         }
+         edit_file("Name ", newline, course_file);
+         string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;
+         system( )//enter column to delete from "course_file"
+         system(del.c_str());
+
     }
 
 }
