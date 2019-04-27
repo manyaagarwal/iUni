@@ -3,6 +3,7 @@
 #include "global_data.h"
 #include "edit_details.h"
 #include "search_people.h"
+#include "courses.h"
 using namespace std;
 
 void student_home_page()
@@ -20,10 +21,10 @@ void student_home_page()
   std::cin >> choice;
   switch (choice) {
     case 1:
-      //View Courses
+      view_enrolled_courses();
       break;
     case 2:
-      //Enrollol
+      enrollCourse();
       break;
     case 3:
       //View Grades
