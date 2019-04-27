@@ -22,7 +22,7 @@ bool addCourse(){
     c.num_assignment = 0;
     this_course = c;
     //Add course created by instructor in the text file
-    string user_info = get_line_from_file(this_user.id, "UserInfo") + " " + c.id;
+    string user_info = get_line_from_file(this_user.id, "UserInfo.txt") + " " + c.id;
     edit_file(this_user.id,user_info,"UserInfo.txt");
     //Add course in a text file
     string courseInfo = c.id + " " + c.name + " " + c.des + " " + c.instructor.id + " " + c.instructor.lname + " " + c.instructor.fname + " " + to_string(c.num_assignment);
