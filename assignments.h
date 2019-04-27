@@ -2,6 +2,7 @@
 #define IUNI_ASSIGNMENTS_H
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "global_data.h"
 using namespace std;
 
