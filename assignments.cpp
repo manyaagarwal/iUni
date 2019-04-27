@@ -30,7 +30,8 @@ void delete_assigment(){
 }
 
 void grade_assignment(string name){
-    ifstream fin(name, std::ios::in);
+    ifstream fin(this_course.id, std::ios::in);
+    ofstream fout(thid_course.id, std::ios::app);
     if (fin.is_open())
     {
         cout<<"Assignment does not exist.";
@@ -40,14 +41,29 @@ void grade_assignment(string name){
     string *course = new string[this_course.num_assignment];
     getline(fin,line);
     stringstream ss(line+"\n");
-    ss>name;
+    ss>>name;
     for (int i=0; i<this_course.num_assignment; i++)
     {
-        ss>course[i];
+        ss>>course[i];
         if(course[i] == name){
             break;
         }
     }
-    cout<<i;
+    int column = i;
+    string grade;
+    int pos;
+    cout<<"Enter grades for the following students:\n";
+    while(getline(ss,line))
+    {
+        ss>>name;
+        cout<<name;
+        for (int j = 0; j<i; j++)
+        {
+            ss>>course[j];
+        }
+        pos = ss.tellg();
+        fout.seekp(pos+1);
+        fout<<grade;
+    }
 
 }
