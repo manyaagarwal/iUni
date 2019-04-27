@@ -12,6 +12,7 @@ void student_course_menu(){
         std::cout << "1 - View Course Details" << '\n';
         std::cout << "2 - Download Assignment" << '\n';
         std::cout << "3 - View Grade" << '\n';
+        std::cout << "4 - Attempt Quiz" << '\n';
         std::cout << "0 - Go Back" << '\n';
         std::cout << "Select Your Choice: " << '\n';
         int choice;
@@ -24,7 +25,9 @@ void student_course_menu(){
                 download_assignment();
                 break;
             case 3:
-                view_grade_student();
+                view_student_grade(this_user.id);
+                break;
+            case 4:
                 break;
             case 0:
                 return;
@@ -33,4 +36,3 @@ void student_course_menu(){
         }
     }
 }
-
