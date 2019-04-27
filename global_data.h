@@ -20,6 +20,7 @@ struct course {
 };
 extern user this_user;
 extern bool in_session;
+extern course this_course;
 
 bool get_user_info(string id, user &u);
 

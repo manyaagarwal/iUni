@@ -22,3 +22,25 @@ void download_assignment(){
 void delete_assigment(){
 
 }
+
+void grade_assignment(string name){
+    ifstream fin(name, std::ios::in);
+    if (fin.is_open())
+    {
+        cout<<"Assignment does not exist.";
+        return;
+    }
+    string line,name;
+    string *course = new string[this_course.num_assignment];
+    stringstream ss(line+"\n");
+    ss>name;
+    for (int i=0; i<this_course.num_assignment; i++)
+    {
+        ss>course[i];
+        if(course[i] == name){
+            break;
+        }
+    }
+    cout<<i;
+
+}

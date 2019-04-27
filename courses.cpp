@@ -9,7 +9,7 @@ bool addCourse(){
     cin>>c.id;
     if(search_identifier(c.id, "CourseInfo.txt")){
     		cout<<"Course already exists.\n";
-    		return;
+    		return false;
     		//Add access to form option
     }
     getline(cin, c.name);
@@ -19,12 +19,13 @@ bool addCourse(){
     getline(cin, c.des);
     c.instructor = this_user;
     this_user.courses.push_back(c.id);
+    c.num_assignment = 0;
+    this_course = c;
     //Add course created by instructor in the text file
     string user_info = get_line_from_file(this_user.id, "UserInfo") + " " + c.id;
     edit_file(this_user.id,user_info,"UserInfo.txt");
     //Add course in a text file
-    string courseInfo = c.id + " " + c.name + " " + c.des + " " + c.instructor.id + " " + c.instructor.lname + " " + c.instructor.fname;
-    this_course = c;
+    string courseInfo = c.id + " " + c.name + " " + c.des + " " + c.instructor.id + " " + c.instructor.lname + " " + c.instructor.fname + " " + to_string(c.num_assignment);
     if (add_line_in_file(courseInfo,"CourseInfo.txt")){
         return true;
     }

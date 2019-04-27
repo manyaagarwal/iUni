@@ -1,4 +1,4 @@
-#include <iosteam>
+#include <iostream>
 #include <fstream>
 #include "global_data.h"
 #include "assignments.h"
@@ -30,8 +30,13 @@ void instructor_course_menu(){
                 upload_assignment();
                 break;
             case 4:
+                remove_assignment();
                 break;
             case 5:
+                string name;
+                cout<<"Enter sssignment file name to grade:\n"
+                getline(cin,name);
+                grade_assignment(name);
                 break;
             case 6:
                 break;
