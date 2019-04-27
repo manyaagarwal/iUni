@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include "global_data.h"
@@ -40,7 +41,7 @@ void student_home_page()
 
       break;
     case 3:
-      //View Grades
+      view_grade_student();
       break;
     case 4:
       search_users();
@@ -57,3 +58,4 @@ void student_home_page()
   }
   }
 }
+
