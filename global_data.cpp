@@ -17,6 +17,7 @@ struct course {
 };
 
 user this_user;
+course this_course;
 bool in_session = false;
 
 bool get_user_info(string id, user &u)

@@ -24,7 +24,17 @@ void instructor_home_page()
       //View Courses
       break;
     case 2:
-      addCourse();
+      if (addCourse()){
+          char ch;
+          cout<<"Course was successfully created.\nDo you wish to view more options related to the course?(Y/N)\n";
+          cin>>ch;
+          if(ch == 'Y'){
+              instructor_course_menu();
+          }
+      }
+      else{
+          cout<<"Course cannot be created"
+      }
       break;
     case 3:
       //View Grades
