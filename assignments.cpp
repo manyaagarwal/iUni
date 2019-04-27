@@ -1,3 +1,12 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <string>
+#include "global_data.h"
+#include <sstream>
+#include <cstdlib>
+using namespace std;
+
 void upload_assignment()
 {
     string path;
@@ -9,7 +18,6 @@ void upload_assignment()
     string cmd = "./upload.sh " + filename + " " + path + " " + this_course.id;
     system(cmd.c_str());
     this_course.num_assignment++;
-    sstream ss(line+"\n");
     string courseFile = this_course.id + ".txt";
     ifstream fin(courseFile);
     string courseInfo;
@@ -30,7 +38,7 @@ bool view_assignment_list(string assignment[]){
     getline(fin, line);
     int length = this_course.num_assignment;
     if(length == 0 ) return false;
-    sstream ss(line+"\n");
+    stringstream ss(line+"\n");
     string temp;
     ss>>temp;
     for(int i=0; i<length; i++)
@@ -51,10 +59,11 @@ void download_assignment(){
         string path;
         cout<<"Enter path to download: \n";
         getline(cin,path);
-        string download = "download_assignment.sh" + " " + assignment[index] + " " + this_course.id + " " + path;
-        system(download);
+        string assignment_name = assignment[index];
+        string download = "./download_assignment.sh" + " " + assignment_name + " " + this_course.id + " " + path;
+        system(download.c_str());
     } else {
-        cout<<"This course has no downloads.\n";
+        cout<<"This course has no assignments.\n";
     }
 
 }
@@ -71,27 +80,29 @@ void grade_assignment(string name){
         cout<<"Assignment does not exist.";
         return;
     }
-    string line,name;
+    string line;
+    string nameS;
     string *course = new string[this_course.num_assignment];
     getline(fin,line);
     stringstream ss(line+"\n");
-    ss>>name;
+    ss>>nameS;
+    int column;
     for (int i=0; i<this_course.num_assignment; i++)
     {
         ss>>course[i];
         if(course[i] == name){
+            column = i;
             break;
         }
     }
-    int column = i;
     string grade;
     int pos;
     cout<<"Enter grades for the following students:\n";
     while(getline(ss,line))
     {
-        ss>>name;
-        cout<<name;
-        for (int j = 0; j<i; j++)
+        ss>>nameS;
+        cout<<nameS;
+        for (int j = 0; j<column; j++)
         {
             ss>>course[j];
         }

@@ -4,6 +4,8 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
+#include <sstream>
+#include <cstdlib>
 #include "global_data.h"
 using namespace std;
 
