@@ -77,6 +77,19 @@ void download_assignment(){
 
 }
 void remove_assignment(){
+    int choice;
+    string *assignment = new string[this_course.num_assignment];
+    if (view_assignment_list(assignment)){
+         cout<<"Select assignment to delete: ";
+         cin>>choice;
+         int index = choice - 1;
+         string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;
+         system(del.c_str());
+         string course_file = this_course.id + ".txt";
+         fstream fin(course_file);
+         string line;
+         getline(fin,line);
+    }
 
 }
 
@@ -121,3 +134,4 @@ void grade_assignment(string name){
     }
 
 }
+

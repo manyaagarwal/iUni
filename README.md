@@ -7,7 +7,7 @@ In a university, it is essential for both professors and student to be connected
 1. Sign in authentication
 2. Sign up as an instructor or student (ID, Name, Faculty, Email, Password)
 3. Instructor features:
-   - Create new courses
+   - Create new courses and edit details 
    - Upload assignments
    - View class grades
    - Remove Student
