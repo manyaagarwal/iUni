@@ -22,7 +22,7 @@ void instructor_home_page()
   std::cin >> choice;
   switch (choice) {
     case 1:
-      //View Courses
+      view_created_courses();
       break;
     case 2:
       if (addCourse()){
