@@ -96,16 +96,20 @@ void remove_assignment(){
          for (int i=0; i<this_course.num_assignment; i++) {
              ss>>course[i];
              if(course[i] == name){
-                 column = i+1;
+                 column = i+2;
              }
              else {
                  newline += " " + course[i];
              }
          }
          edit_file("Name ", newline, course_file);
-         string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;
-         system( )//enter column to delete from "course_file"
+         //string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;
+         string file = this_course.id+".txt";
+         string del = "awk '{$" +column+"=\"\"; print $0}' "+file+" > temp.txt");
          system(del.c_str());
+         remove(file.c_str());
+         rename("text.txt", file.c_str());//enter column to delete from "course_file"
+         //system(del.c_str());
 
     }
 
@@ -152,4 +156,3 @@ void grade_assignment(string name){
     }
 
 }
-

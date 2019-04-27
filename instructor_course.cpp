@@ -36,6 +36,7 @@ void instructor_course_menu(){
             case 5:
                 cout<<"Enter assignment file name to grade:\n";
                 getline(cin,name);
+                getline(cin,name);
                 grade_assignment(name);
                 break;
             case 0:
@@ -45,4 +46,3 @@ void instructor_course_menu(){
         }
     }
 }
-
