@@ -1,5 +1,6 @@
 #!/bin/bash
-if [[ -d Users/$1 ]]; then
+if [[ -d Users/$1 ]]
+then
   rm -r Users/$1
 fi
 mkdir Users/$1
