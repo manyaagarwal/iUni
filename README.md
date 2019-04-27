@@ -10,7 +10,7 @@ In a university, it is essential for both professors and student to be connected
    - Create new courses and edit details 
    - Upload assignments
    - View class grades
-   - Remove Student (already enrolled in instructor's course)
+   - Remove Student
 4. Student features:
    - Enroll courses
    - Download assignments

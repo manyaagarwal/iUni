@@ -15,3 +15,4 @@ void view_grades();
 void view_grade_student();
 void edit_details(course &c);
 #endif
+

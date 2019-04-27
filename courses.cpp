@@ -174,3 +174,4 @@ void view_grade_student(){
     string grade = get_line_from_file(this_user.id, file);
     cout<<grade;
 }
+
