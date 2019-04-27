@@ -35,7 +35,7 @@ bool addCourse(){
     }
 }
 
-void enrollCourse() {
+bool enrollCourse() {
     course c;
     char choice;
     cout<<"Enter Course Code to Enroll: ";
@@ -43,8 +43,7 @@ void enrollCourse() {
 
     if (!search_identifier(c.id,"CourseInfo.txt"))
     {
-        cout<<"Course Code that you entered does not exist.";
-        return;
+        return false;
     }
     string course = get_line_from_file(c.id,"CourseInfo.txt");
     printf("Course details are as follows:\n%s\n", course.c_str());
@@ -67,6 +66,7 @@ void enrollCourse() {
         string user_info = get_line_from_file(this_user.id, "UserInfo") + " " + c.id;
         edit_file(this_user.id,user_info,"UserInfo.txt");
         fout.close();
+        return true;
     }
 }
 
