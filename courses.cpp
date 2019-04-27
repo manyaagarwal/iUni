@@ -89,7 +89,7 @@ void view_created_courses(){
     cout<<"You created the following courses:\n";
     print_vector(this_user.courses);
 }
-
+/*
 void remove_user_from_course()
 {
   std::cout << "Enter Student UID: ";
@@ -124,7 +124,7 @@ void remove_user_from_course()
   }
   }
 }
-
+*/
 void view_details(string id){
     cout<<get_line_from_file(id, "CourseInfo.txt");
 }

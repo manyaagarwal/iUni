@@ -12,4 +12,5 @@ void view_created_courses();
 void view_enrolled_courses();
 void view_details(string id);
 void edit_details(course &c);
+//void remove_user_from_course(string id, string course);
 #endif

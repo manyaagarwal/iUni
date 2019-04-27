@@ -42,7 +42,7 @@ void instructor_course_menu(){
                 grade_assignment(name);
                 break;
             case 6:
-                remove_user_from_course(string id, this_course.id);
+                //remove_user_from_course(string id, this_course.id);
                 break;
             case 7:
                 break;

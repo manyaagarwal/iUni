@@ -25,7 +25,7 @@ void student_course_menu(){
                 download_assignment();
                 break;
             case 3:
-                view_student_grade(this_user.id);
+                //view_student_grade(this_user.id);
                 break;
             case 4:
                 break;
