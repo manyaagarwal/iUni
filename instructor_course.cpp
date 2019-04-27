@@ -15,8 +15,6 @@ void instructor_course_menu(){
         std::cout << "3 - Add Assignment" << '\n';
         std::cout << "4 - Remove Assignment" << '\n';
         std::cout << "5 - Grade Assignment" << '\n';
-        std::cout << "6 - Remove Student From Course" << '\n';
-        std::cout << "7 - View Quiz Grades" << '\n';
         std::cout << "0 - Go Back" << '\n';
         std::cout << "Select Your Choice: " << '\n';
         int choice;
@@ -38,13 +36,7 @@ void instructor_course_menu(){
             case 5:
                 cout<<"Enter assignment file name to grade:\n";
                 getline(cin,name);
-                getline(cin,name);
                 grade_assignment(name);
-                break;
-            case 6:
-                //remove_user_from_course(string id, this_course.id);
-                break;
-            case 7:
                 break;
             case 0:
                 return;
@@ -53,3 +45,4 @@ void instructor_course_menu(){
         }
     }
 }
+

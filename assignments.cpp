@@ -24,8 +24,16 @@ void upload_assignment()
     string courseInfo;
     getline(fin, courseInfo);
     //Updating course info in the individual text file
-    courseInfo += this_course.id + " ";
-    edit_file("Name ", courseInfo, courseFile);
+    string line;
+    if(!getline(fin,line))
+    {
+        courseInfo = "Name " + this_course.id;
+        add_line_in_file(courseInfo,courseFile);
+    }
+    else {
+        courseInfo += this_course.id + " ";
+        edit_file("Name ", courseInfo, courseFile);
+    }
     //Updating the assignment count in the CourseInfo text file
     string assignmentCount = this_course.id + " " + this_course.name + " " + this_course.des + " " + this_course.instructor.id + " "
             + this_course.instructor.lname + " " + this_course.instructor.fname + " " + to_string(this_course.num_assignment);
@@ -69,12 +77,19 @@ void download_assignment(){
 
 }
 void remove_assignment(){
-
-}
-
-void view_grade()
-{
-  std::cout << "Enter  " << '\n';
+    int choice;
+    string *assignment = new string[this_course.num_assignment];
+    if (view_assignment_list(assignment)){
+         cout<<"Select assignment to delete: ";
+         cin>>choice;
+         int index = choice - 1;
+         string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;
+         system(del.c_str());
+         string course_file = this_course.id + ".txt";
+         fstream fin(course_file);
+         string line;
+         getline(fin,line);
+    }
 
 }
 
@@ -119,3 +134,4 @@ void grade_assignment(string name){
     }
 
 }
+
