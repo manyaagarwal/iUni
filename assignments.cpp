@@ -94,17 +94,17 @@ void remove_assignment(){
          newline += name;
          int column;
          for (int i=0; i<this_course.num_assignment; i++) {
-             ss>>course[i];
-             if(course[i] == name){
+             ss>>assignment[i];
+             if(assignment[i] == name){
                  column = i+1;
              }
              else {
-                 newline += " " + course[i];
+                 newline += " " + assignment[i];
              }
          }
          edit_file("Name ", newline, course_file);
          string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;
-         system( )//enter column to delete from "course_file"
+//         system( );//enter column to delete from "course_file"
          system(del.c_str());
 
     }

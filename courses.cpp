@@ -25,7 +25,7 @@ bool addCourse(){
     string user_info = get_line_from_file(this_user.id, "UserInfo.txt") + " " + c.id;
     edit_file(this_user.id,user_info,"UserInfo.txt");
     //Add course in a text file
-    string courseInfo = c.id + " " + c.name + " " + c.des + " " + c.instructor.id + " " + c.instructor.lname + " " + c.instructor.fname + " " + to_string(c.num_assignment);
+    string courseInfo = c.id + " \t" + c.name + "\t" + c.des + "\t" + c.instructor.id + "\t" + c.instructor.lname + "\t" + c.instructor.fname + "\t " + to_string(c.num_assignment);
     if (add_line_in_file(courseInfo,"CourseInfo.txt")){
         return true;
     }
@@ -131,7 +131,7 @@ void edit_details(course &c){
             std::string line;
             while (std::getline(fin, line)) {
                 if(line.find(c.id+" ")==0){
-                    fout<<c.id+" "+c.name+" "+c.des+" "+c.instructor.id+" "+c.instructor.fname+" "+c.instructor.lname<<"\n";
+                    fout<<c.id+"\t"+c.name+"\t"+c.des+"\t"+c.instructor.id+"\t"+c.instructor.fname+"\t"+c.instructor.lname+"\t"+ to_string(c.num_assignment)<<"\n";
                 }else{
                     fout<<line<<"\n";
                 }
@@ -165,7 +165,6 @@ void view_grades(){
 void view_grade_student(){
     cout<<"Select course to view grades: ";
     view_enrolled_courses();
-    int choice;
     int choice;
     cout<<"Enter your choice: ";
     cin>>choice;
