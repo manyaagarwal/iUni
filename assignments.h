@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <string>
 #include "global_data.h"
 using namespace std;
 

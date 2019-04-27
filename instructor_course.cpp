@@ -34,7 +34,7 @@ void instructor_course_menu(){
                 break;
             case 5:
                 string name;
-                cout<<"Enter sssignment file name to grade:\n"
+                cout<<"Enter assignment file name to grade:\n"
                 getline(cin,name);
                 grade_assignment(name);
                 break;
