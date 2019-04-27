@@ -161,3 +161,16 @@ void view_grades(){
         cout<<line<<endl;
     }
 }
+
+void view_grade_student(){
+    cout<<"Select course to view grades: ";
+    view_enrolled_courses();
+    int choice;
+    int choice;
+    cout<<"Enter your choice: ";
+    cin>>choice;
+    string course = this_user.courses[choice-1];
+    string file = course + ".txt";
+    string grade = get_line_from_file(this_user.id, file);
+    cout<<grade;
+}
