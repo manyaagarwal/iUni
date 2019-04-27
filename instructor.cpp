@@ -4,6 +4,7 @@
 #include "edit_details.h"
 #include "courses.h"
 #include "search_people.h"
+#include "instructor_course.h"
 using namespace std;
 
 void instructor_home_page()
@@ -33,7 +34,7 @@ void instructor_home_page()
           }
       }
       else{
-          cout<<"Course cannot be created"
+          cout<<"Course cannot be created";
       }
       break;
     case 3:

@@ -2,10 +2,11 @@
 #define COURSES value
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "global_data.h"
 using namespace std;
 
-void addCourse();
+bool addCourse();
 void enrollCourse();
 void view_enrolled_courses();
 void view_details(string id);

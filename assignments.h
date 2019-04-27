@@ -11,4 +11,6 @@ void upload_assignment();
 void download_assignment();
 
 void remove_assignment();
+
+void grade_assignment(string name);
 #endif
