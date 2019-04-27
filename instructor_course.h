@@ -6,6 +6,6 @@
 #include "assignments.h"
 #include "courses.h"
 
-void instructor_course_menu();
+void instructor_course_menu(string id);
 
 #endif //IUNI_INSTRUCTOR_COURSE_MENU_H

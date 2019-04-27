@@ -30,7 +30,7 @@ void instructor_home_page()
           cout<<"Course was successfully created.\nDo you wish to view more options related to the course?(Y/N)\n";
           cin>>ch;
           if(ch == 'Y'){
-              instructor_course_menu();
+              instructor_course_menu(this_course.id);
           }
       }
       else{
@@ -55,4 +55,3 @@ void instructor_home_page()
   }
   }
 }
-

@@ -13,7 +13,7 @@ void upload_assignment();
 
 bool view_assignment_list();
 
-void download_assignment();
+void download_assignment(string id);
 
 void remove_assignment();
 

@@ -7,6 +7,6 @@
 #include "courses.h"
 using namespace std;
 
-void student_course_menu();
+void student_course_menu(string id);
 
 #endif //IUNI_STUDENT_COURSE_H

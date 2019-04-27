@@ -1,8 +1,10 @@
 #!/bin/bash
-if [[ -d ./$3 ]]
+if [ -d ./$3 ]
 then
-    cp $2 ./$3/$1
+    echo "directory existed"
+    cp $2 ./$3/
 else
     mkdir ./$3
-    cp $2 ./$3/$1
+    echo "Created directory"
+    cp $2 ./$3/
 fi

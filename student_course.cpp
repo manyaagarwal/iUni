@@ -5,7 +5,7 @@
 #include "courses.h"
 using namespace std;
 
-void student_course_menu(){
+void student_course_menu(string id){
     while(true)
     {
         std::cout << "Welcome " <<this_user.fname<< "!\n";
@@ -21,10 +21,10 @@ void student_course_menu(){
                 view_details(this_course.id);
                 break;
             case 2:
-                download_assignment();
+                download_assignment(id);
                 break;
             case 3:
-                view_grade_student();
+                view_grade_student(id);
                 break;
             case 0:
                 return;

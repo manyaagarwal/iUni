@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include "global_data.h"
+#include "instructor_course.h"
+#include "student_course.h"
 using namespace std;
 
 bool addCourse(){
@@ -24,6 +26,7 @@ bool addCourse(){
     //Add course created by instructor in the text file
     string user_info = get_line_from_file(this_user.id, "UserInfo.txt") + " " + c.id;
     edit_file(this_user.id,user_info,"UserInfo.txt");
+    get_user_info(this_user.id, this_user);
     //Add course in a text file
     string courseInfo = c.id + " \t" + c.name + "\t" + c.des + "\t" + c.instructor.id + "\t" + c.instructor.lname + "\t" + c.instructor.fname + "\t " + to_string(c.num_assignment);
     if (add_line_in_file(courseInfo,"CourseInfo.txt")){
@@ -52,6 +55,8 @@ bool enrollCourse() {
     if (choice == 'Y')
     {
         string line;
+        get_course_info(c.id,c);
+        this_course = c;
         string course_file = c.id + ".txt";
         bool add_header = false;
         ifstream fin(course_file, std::ios::in);
@@ -65,12 +70,14 @@ bool enrollCourse() {
         fout<<this_user.id<<endl;
         string user_info = get_line_from_file(this_user.id, "UserInfo.txt") + " " + c.id;
         edit_file(this_user.id,user_info,"UserInfo.txt");
+        get_user_info(this_user.id,this_user);
         fout.close();
         return true;
     }
 }
 
 void view_enrolled_courses(){
+   get_user_info(this_user.id, this_user);
     if (this_user.courses.size() == 0)
     {
         cout<<"You are enrolled in no courses.\n";
@@ -78,9 +85,21 @@ void view_enrolled_courses(){
     }
     cout<<"You are enrolled in the following courses:\n";
     print_vector(this_user.courses);
+    cout<<"Do you wish to view more options related to the course?(Y/N)\n";
+    char ch;
+    cin>>ch;
+    if(ch == 'Y'){
+      int index;
+      cout<<"Enter choice for course: ";
+      cin>>index;
+      index = index - 1;
+      get_course_info(this_user.courses[index],this_course);
+      student_course_menu(this_course.id);
+    }
 }
 
 void view_created_courses(){
+   get_user_info(this_user.id, this_user);
     if(this_user.courses.size() == 0)
     {
         cout<<"You have created no courses.\n";
@@ -88,10 +107,22 @@ void view_created_courses(){
     }
     cout<<"You created the following courses:\n";
     print_vector(this_user.courses);
+    cout<<"Do you wish to view more options related to the course?(Y/N)\n";
+    char ch;
+    cin>>ch;
+    if(ch == 'Y'){
+      int index;
+      cout<<"Enter choice for course: ";
+      cin>>index;
+      index = index - 1;
+      get_course_info(this_user.courses[index],this_course);
+      instructor_course_menu(this_course.id);
+    }
 }
 
 void view_details(string id){
-    cout<<get_line_from_file(id, "CourseInfo.txt");
+    get_course_info(id,this_course);
+    cout<<get_line_from_file(this_course.id, "CourseInfo.txt");
 }
 
 void edit_details(course &c){
@@ -129,6 +160,7 @@ void edit_details(course &c){
         ofstream fout("temp.txt");
         if (fin.is_open()) {
             std::string line;
+            getline(fin, line);
             while (std::getline(fin, line)) {
                 if(line.find(c.id+" ")==0){
                     fout<<c.id+"\t"+c.name+"\t"+c.des+"\t"+c.instructor.id+"\t"+c.instructor.fname+"\t"+c.instructor.lname+"\t"+ to_string(c.num_assignment)<<"\n";
@@ -147,6 +179,7 @@ void edit_details(course &c){
 }
 
 void view_grades(){
+    get_user_info(this_user.id, this_user);
     cout<<"Select course to view grades: ";
     view_created_courses();
     int choice;
@@ -162,7 +195,8 @@ void view_grades(){
     }
 }
 
-void view_grade_student(){
+void view_grade_student(string id){
+    get_user_info(this_user.id, this_user);
     cout<<"Select course to view grades: ";
     view_enrolled_courses();
     int choice;

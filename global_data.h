@@ -24,6 +24,8 @@ extern course this_course;
 
 bool get_user_info(string id, user &u);
 
+bool get_course_info(string id, course &c);
+
 bool search_identifier(string, string);
 
 bool add_line_in_file(string s, string file);

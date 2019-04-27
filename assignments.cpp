@@ -18,6 +18,7 @@ void upload_assignment()
     getline(cin,path);
     string cmd = "./upload.sh " + filename + " " + path + " " + this_course.id;
     system(cmd.c_str());
+    get_course_info(this_course.id, this_course);
     this_course.num_assignment++;
     string courseFile = this_course.id + ".txt";
     ifstream fin(courseFile);
@@ -27,16 +28,16 @@ void upload_assignment()
     string line;
     if(!getline(fin,line))
     {
-        courseInfo = "Name " + this_course.id;
+        courseInfo = "Name " + filename;
         add_line_in_file(courseInfo,courseFile);
     }
     else {
-        courseInfo += this_course.id + " ";
+        courseInfo += filename + " ";
         edit_file("Name ", courseInfo, courseFile);
     }
     //Updating the assignment count in the CourseInfo text file
-    string assignmentCount = this_course.id + " " + this_course.name + " " + this_course.des + " " + this_course.instructor.id + " "
-            + this_course.instructor.lname + " " + this_course.instructor.fname + " " + to_string(this_course.num_assignment);
+    string assignmentCount = this_course.id + "\t" + this_course.name + "\t" + this_course.des + "\t" + this_course.instructor.id + "\t"
+            + this_course.instructor.lname + "\t" + this_course.instructor.fname + "\t" + to_string(this_course.num_assignment);
     edit_file(this_course.id, assignmentCount, "CourseInfo.txt");
 }
 
@@ -58,9 +59,10 @@ bool view_assignment_list(string assignment[]){
     return true;
 }
 
-void download_assignment(){
+void download_assignment(string id){
     int choice;
     string *assignment = new string[this_course.num_assignment];
+    get_course_info(id, this_course);
     if (view_assignment_list(assignment)) {
         cout<<"Select assignment to download: ";
         cin>>choice;
@@ -103,15 +105,15 @@ void remove_assignment(){
              }
          }
          edit_file("Name ", newline, course_file);
-      
-         string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;  //To delete file from course directoru 
+
+         string del = "./delete.sh " " " + assignment[index] + " " + this_course.id;  //To delete file from course directoru
          string file = this_course.id+".txt";
-         string del_column = "awk '{$" + to_string(column) + "=\"\"; print $0}' " + file + " > temp.txt"; 
+         string del_column = "awk '{$" + to_string(column) + "=\"\"; print $0}' " + file + " > temp.txt";
          system(del.c_str());
          system(del_column.c_str());  //To delete assignment column from course txt
          remove(file.c_str());
          rename("text.txt", file.c_str());
-        
+
 
     }
 
@@ -121,7 +123,7 @@ void grade_assignment(string name){
     string filename = this_course.id + ".txt";
     ifstream fin(filename, std::ios::in);
     ofstream fout(filename, std::ios::app);
-    if (fin.is_open())
+    if (!fin.is_open())
     {
         cout<<"Assignment does not exist.";
         return;
@@ -138,23 +140,26 @@ void grade_assignment(string name){
         ss>>course[i];
         if(course[i] == name){
             column = i;
-            break;
         }
     }
     string grade;
     int pos;
     cout<<"Enter grades for the following students:\n";
-    while(getline(ss,line))
+    int counter = 1;
+    while(getline(fin,line))
     {
+        ss = stringstream(line+"\n");
         ss>>nameS;
         cout<<nameS;
+        cin>>grade;
         for (int j = 0; j<column; j++)
         {
             ss>>course[j];
         }
-        pos = ss.tellg();
+        pos =  (line.size() * counter) + ss.tellg();
         fout.seekp(pos+1);
         fout<<grade;
+        counter++;
     }
 
 }

@@ -31,7 +31,7 @@ void student_home_page()
             cout<<"Course was successfully added.\nDo you wish to view more options related to the course?(Y/N)\n";
             cin>>ch;
             if(ch == 'Y'){
-                student_course_menu();
+                student_course_menu(this_course.id);
             }
         }
         else{
@@ -41,7 +41,7 @@ void student_home_page()
 
       break;
     case 3:
-      view_grade_student();
+      view_grade_student(this_course.id);
       break;
     case 4:
       search_users();
@@ -58,4 +58,3 @@ void student_home_page()
   }
   }
 }
-

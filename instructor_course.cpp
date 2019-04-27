@@ -6,7 +6,7 @@
 #include "courses.h"
 using namespace std;
 
-void instructor_course_menu(){
+void instructor_course_menu(string id){
     while(true)
     {
         std::cout << "Welcome " <<this_user.fname<< "!\n";
@@ -22,7 +22,7 @@ void instructor_course_menu(){
         cin>>choice;
         switch(choice){
             case 1:
-                view_details(this_course.id);
+                view_details(id);
                 break;
             case 2:
                 edit_details(this_course);

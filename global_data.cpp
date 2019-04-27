@@ -25,9 +25,26 @@ bool get_user_info(string id, user &u)
 	std::ifstream fin("UserInfo.txt", std::ios::in);
 	if (fin.is_open()) {
 		std::string line;
+		string courses;
 		while (std::getline(fin, line)) {
-			stringstream ss(line);
+			stringstream ss(line+"\n");
 			ss>>u.id>>u.password>>u.email>>u.category>>u.fname>>u.lname;
+			getline(ss, courses);
+			string course = "";
+			u.courses = vector <string> (0);
+			courses+="\n";
+			for (int i=0; i<courses.size(); i++)
+			{
+				if(courses[i]!='\n' && courses[i]!=' ')
+				{
+					course = course+ courses[i];
+				}
+				else {
+					if(course!="")
+						u.courses.push_back(course);
+					course="";
+				}
+			}
 			if(u.id == id){
 				return true;
 			}
@@ -42,17 +59,27 @@ bool get_course_info(string id, course &c)
 	std::ifstream fin("CourseInfo.txt", std::ios::in);
 	if (fin.is_open()) {
 		std::string line;
-		while (std::getline(fin){
+		while (std::getline(fin,line)){
+			line = line + '\n';
 			vector<string> words;
 			string word;
 			for(int i=0;i<line.size();i++){
-				if(line[i]!='\t'){
-					word+=line[i];
+				if(line[i]!='\t' && line[i]!='\n'){
+					word = word + line[i];
 				}else{
 					words.push_back(word);
+					word = "";
 				}
 			}
-			if(u.id == id){
+			std::cout << word << '\n';
+			c.id = words[0];
+			c.name = words[1];
+			c.des = words[2];
+			c.instructor.id = words[3];
+			c.instructor.lname = words[4];
+			c.instructor.fname = words[5];
+			c.num_assignment = atoi(words[6].c_str());
+			if(c.id == id){
 				return true;
 			}
 		}
@@ -112,7 +139,7 @@ string get_line_from_file(string id, string file)
     if (fin.is_open()) {
         string line;
         while (std::getline(fin, line)) {
-            if(line.substr(0, id.size())==id && line[id.size()]==' '){
+            if(line.substr(0, id.size())==id && (line[id.size()]==' '||line[id.size()]=='\t')){
                 return line;
             }
         }
@@ -147,5 +174,5 @@ void edit_file(string id, string newline, string file)
 void print_vector(vector<string> &input)
 {
     for (int i=0; i<input.size(); i++)
-        cout<<i+1<<". "<<input.at(i)<<endl;
+        cout<<i+1<<". "<<input[i]<<endl;
 }
