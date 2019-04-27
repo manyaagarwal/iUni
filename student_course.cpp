@@ -1,3 +1,10 @@
+#include <iostream>
+#include <fstream>
+#include "global_data.h"
+#include "assignments.h"
+#include "courses.h"
+using namespace std;
+
 void student_course_menu(){
     while(true)
     {
@@ -18,7 +25,7 @@ void student_course_menu(){
                 download_assignment();
                 break;
             case 3:
-                view_grade();
+                //view_grade();
                 break;
             case 4:
                 break;

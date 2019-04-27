@@ -5,6 +5,7 @@
 #include "global_data.h"
 #include "assignments.h"
 #include "courses.h"
+using namespace std;
 
 void student_course_menu();
 
