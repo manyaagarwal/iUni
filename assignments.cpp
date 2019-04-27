@@ -22,7 +22,40 @@ void upload_assignment()
             + this_course.instructor.lname + " " + this_course.instructor.fname + " " + to_string(this_course.num_assignment);
     edit_file(this_course.id, assignmentCount, "CourseInfo.txt");
 }
+
+bool view_assignment_list(string assignment[]){
+    string filename = this_course.id + ".txt";
+    ifstream fin(filename, std::ios::in);
+    string line;
+    getline(fin, line);
+    int length = this_course.num_assignment;
+    if(length == 0 ) return false;
+    sstream ss(line+"\n");
+    string temp;
+    ss>>temp;
+    for(int i=0; i<length; i++)
+    {
+        ss>>assignment[i];
+        cout<<i+1<<". "<<assignment[i]<<endl;
+    }
+    return true;
+}
+
 void download_assignment(){
+    int choice;
+    string *assignment = new string[this_course.num_assignment];
+    if (view_assignment_list(assignment)) {
+        cout<<"Select assignment to download: ";
+        cin>>choice;
+        int index = choice - 1;
+        string path;
+        cout<<"Enter path to download: \n";
+        getline(cin,path);
+        string download = "download_assignment.sh" + " " + assignment + " " + index + " " + path;
+        system(download);
+    } else {
+        cout<<"This course has no downloads.\n";
+    }
 
 }
 void delete_assigment(){
@@ -30,8 +63,9 @@ void delete_assigment(){
 }
 
 void grade_assignment(string name){
-    ifstream fin(this_course.id, std::ios::in);
-    ofstream fout(thid_course.id, std::ios::app);
+    string filename = this_course.id + ".txt";
+    ifstream fin(filename, std::ios::in);
+    ofstream fout(filename, std::ios::app);
     if (fin.is_open())
     {
         cout<<"Assignment does not exist.";

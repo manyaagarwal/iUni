@@ -9,6 +9,8 @@ using namespace std;
 
 void upload_assignment();
 
+bool view_assignment_list();
+
 void download_assignment();
 
 void remove_assignment();
