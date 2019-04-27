@@ -2,13 +2,17 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <vector>
+#include <cstdlib>
 using namespace std;
 
 struct user {
 	string id, password, email, category, fname, lname;
+	vector <string> courses;
 };
 struct course {
     string id,name,des;
+    int num_assignment;
     user instructor;
 };
 
@@ -74,4 +78,48 @@ bool find_line_in_file(string s, string file)
 		fin.close();
 	}
 	return false;
+}
+
+string get_line_from_file(string id, string file)
+{
+    ifstream fin(file, std::ios::in);
+    if (fin.is_open()) {
+        string line;
+        while (std::getline(fin, line)) {
+            if(line.substr(0, id.size())==id && line[id.size()]==' '){
+                return line;
+            }
+        }
+        fin.close();
+    }
+    else {
+        return "";
+    }
+    return "";
+}
+
+void edit_file(string id, string newline, string file)
+{
+    std::ifstream fin(file);
+    std::ofstream fout("temp.txt");
+    if (fin.is_open()) {
+        std::string line;
+        while (std::getline(fin, line)) {
+            if(line.substr(0, id.size())==id && line[id.size()]==' '){
+                fout<<newline<<endl;
+            }
+            else {
+                fout<<line<<endl;
+            }
+        }
+        fin.close();
+    }
+    remove(file.c_str());
+    rename("temp.txt",file.c_str());
+}
+
+void print_vector(vector<string> &input)
+{
+    for (int i=0; i<input.size(); i++)
+        cout<<input.at(i)<<endl;
 }

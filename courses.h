@@ -6,5 +6,7 @@
 using namespace std;
 
 void addCourse();
+void enrollCourse();
+void view_enrolled_courses();
 
 #endif

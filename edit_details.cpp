@@ -1,5 +1,6 @@
 #include <fstream>
 #include <string>
+#include <sstream>
 #include "global_data.h"
 #include <cstdlib>
 using namespace std;
@@ -42,9 +43,14 @@ void edit(user &u)
     std::string line;
     while (std::getline(fin, line)) {
       if(line.find(u.id+" ")==0){
-        fout<<u.id+" "+u.password+" "+u.email+" "+u.category+" "+u.fname+" "+u.lname<<"\n";
+          stringstream ss(line+"\n");
+          user temp;
+          string courses;
+          ss>>temp.id>>temp.password>>temp.email>>temp.category>>temp.fname>>temp.lname;
+          getline(ss, courses);
+        fout<<u.id+" "+u.password+" "+u.email+" "+u.category+" "+u.fname+" "+u.lname+" "+courses<<"\n";
       }else{
-        fout<<line<<"\n";
+        fout<<line<<    "\n";
       }
     }
     remove("UserInfo.txt");
